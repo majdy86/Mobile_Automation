@@ -1,20 +1,16 @@
 package stepdefs;
 
-import PageObjects.PageFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import io.restassured.RestAssured;
-import io.restassured.filter.log.LogDetail;
-import utils.DriverManager;
-import utils.PropManager;
+import FactoryObjects.DriverFactory;
 
 
 public class Hooks {
 
-    public DriverManager driverManager;
+    public DriverFactory driverFactory;
 
-    public Hooks(DriverManager driverManager){
-        this.driverManager = driverManager;
+    public Hooks(DriverFactory driverFactory){
+        this.driverFactory = driverFactory;
     }
 
     @Before
@@ -24,7 +20,7 @@ public class Hooks {
     @After
     public void tearDown(){
         System.out.println("test");
-        driverManager.getDriver().quit();
+        driverFactory.getDriver().quit();
 
     }
 }

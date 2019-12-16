@@ -1,9 +1,9 @@
 package PageObjects;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import utils.DriverManager;
+import FactoryObjects.DriverFactory;
 import utils.PropManager;
 
 public class Login extends BasePageObject{
@@ -12,15 +12,15 @@ public class Login extends BasePageObject{
 
     @FindBy(name = "email")
     protected WebElement email;
+    DriverFactory driver;
 
-    DriverManager driverManager;
-    public Login(DriverManager driverManager) {
-        super(driverManager.getDriver());
-        this.driverManager = driverManager;
+    public Login(DriverFactory driverFactory) {
+        super(driverFactory.getDriver());
+        this.driver = driverFactory;
     }
 
     public void navigateToLoginPage(){
-        driverManager.getDriver().get(loginPageURL);
+        driver.getDriver().get(loginPageURL);
         email.sendKeys("test");
     }
 
