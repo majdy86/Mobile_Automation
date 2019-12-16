@@ -100,6 +100,13 @@
             <version>1.0.1</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.browserstack/automate-testassist -->
+        <dependency>
+            <groupId>com.browserstack</groupId>
+            <artifactId>automate-testassist</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
 
 
     </dependencies>

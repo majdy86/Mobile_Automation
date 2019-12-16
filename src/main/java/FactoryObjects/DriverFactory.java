@@ -58,13 +58,13 @@ public class DriverFactory {
                 DesiredCapabilities caps = new DesiredCapabilities();
                 caps.setCapability("browser", System.getProperty("browser"));
 
-                if (System.getProperty("local") != null && System.getProperty("local").equals("true")) {
-                    caps.setCapability("browserstack.local", "true");
-                    l = new Local();
-                    Map<String, String> options = new HashMap<String, String>();
-                    options.put("key", ACCESS_KEY);
-                    l.start(options);
-                }
+//                if (System.getProperty("local") != null && System.getProperty("local").equals("true")) {
+//                    caps.setCapability("browserstack.local", "true");
+//                    l = new Local();
+//                    Map<String, String> options = new HashMap<String, String>();
+//                    options.put("key", ACCESS_KEY);
+//                    l.start(options);
+//                }
 
                 driver = new RemoteWebDriver(new URL(URL), caps);
 //                System.setProperty("webdriver.chrome.driver", "drivers/windows/chrome/chromedriver.exe");
