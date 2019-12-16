@@ -14,12 +14,12 @@ public class Login extends BasePageObject{
     protected WebElement email;
     DriverFactory driver;
 
-    public Login(DriverFactory driverFactory) {
+    public Login(DriverFactory driverFactory) throws Exception {
         super(driverFactory.getDriver());
         this.driver = driverFactory;
     }
 
-    public void navigateToLoginPage(){
+    public void navigateToLoginPage() throws Exception {
         driver.getDriver().get(loginPageURL);
         email.sendKeys("test");
     }

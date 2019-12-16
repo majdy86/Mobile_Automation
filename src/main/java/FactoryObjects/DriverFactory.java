@@ -1,12 +1,18 @@
 package FactoryObjects;
 
+import com.browserstack.local.Local;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import utils.PropManager;
 
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,22 +21,23 @@ import java.util.concurrent.TimeUnit;
 public class DriverFactory {
 
     private WebDriver driver ;
+    private Local l;
     // public static final ThreadLocal<Logger> log = new ThreadLocal<Logger>();
 
-    public DriverFactory(){
+    public DriverFactory() throws Exception {
         if (driver == null) {
             driver = getDriver();
         }
     }
 
-    public WebDriver getDriver() {
+    public WebDriver getDriver() throws Exception {
         if (driver == null) {
             setWebDriver(createInstance(PropManager.getInstance().getProperty("browser")));
         }
         return driver;
     }
 
-    public WebDriver createInstance(String browserName) {
+    public WebDriver createInstance(String browserName) throws Exception {
         WebDriver driver;
         browserName = (browserName != null) ? browserName : "chrome";
 
@@ -44,8 +51,24 @@ public class DriverFactory {
                 driver = new InternetExplorerDriver();
                 break;
             case CHROME:
-                System.setProperty("webdriver.chrome.driver", "drivers/windows/chrome/chromedriver");
-                driver = new ChromeDriver();
+                String USERNAME = "majdisuleiman1";
+                String ACCESS_KEY = "BxJaxqF7ha2zUYNAezzx";
+                String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@hub.browserstack.com/wd/hub";
+
+                DesiredCapabilities caps = new DesiredCapabilities();
+                caps.setCapability("browser", System.getProperty("browser"));
+
+                if (System.getProperty("local") != null && System.getProperty("local").equals("true")) {
+                    caps.setCapability("browserstack.local", "true");
+                    l = new Local();
+                    Map<String, String> options = new HashMap<String, String>();
+                    options.put("key", ACCESS_KEY);
+                    l.start(options);
+                }
+
+                driver = new RemoteWebDriver(new URL(URL), caps);
+//                System.setProperty("webdriver.chrome.driver", "drivers/windows/chrome/chromedriver.exe");
+//                driver = new ChromeDriver();
                 break;
             case EDGE:
                 System.setProperty("webdriver.edge.driver", "drivers/windows/edge/MicrosoftWebDriver.exe");
@@ -73,6 +96,7 @@ public class DriverFactory {
 
     public void setWebDriver(WebDriver driver) {
         if (driver != null) {
+            //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             this.driver = driver;
         }
 

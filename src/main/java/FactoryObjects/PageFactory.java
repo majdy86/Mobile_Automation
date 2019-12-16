@@ -31,7 +31,7 @@ public class PageFactory {
         return _pageFactory;
     }
 
-    public Login loginPage() {
+    public Login loginPage() throws Exception {
             loginPage = new Login(driverFactory);
             return loginPage;
     }

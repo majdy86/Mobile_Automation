@@ -18,8 +18,7 @@ public class Hooks {
     }
 
     @After
-    public void tearDown(){
-        System.out.println("test");
+    public void tearDown() throws Exception {
         driverFactory.getDriver().quit();
 
     }

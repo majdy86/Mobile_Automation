@@ -18,7 +18,7 @@ public class LoginStepDefs {
 
     //private ApiConfig apiConfig;
     @Given("the user navigate to Login Page")
-    public void theUserNavigateToLoginPage() {
+    public void theUserNavigateToLoginPage() throws Exception {
 
         pageFactory.loginPage().navigateToLoginPage();
         System.out.println("test");
