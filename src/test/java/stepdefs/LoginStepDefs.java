@@ -4,6 +4,7 @@ import PageObjects.Login;
 import FactoryObjects.PageFactory;
 import io.cucumber.java.en.Given;
 import FactoryObjects.DriverFactory;
+import org.junit.Assert;
 import utils.PropManager;
 
 
@@ -22,5 +23,6 @@ public class LoginStepDefs {
 
         pageFactory.loginPage().navigateToLoginPage();
         System.out.println("test");
+        Assert.assertEquals(5, 3);
     }
 }
