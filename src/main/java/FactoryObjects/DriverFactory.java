@@ -51,8 +51,8 @@ public class DriverFactory {
                 driver = new InternetExplorerDriver();
                 break;
             case CHROME:
-                String USERNAME = "majdisuleiman1";
-                String ACCESS_KEY = "BxJaxqF7ha2zUYNAezzx";
+                String USERNAME = "amalalkhawatrah1";
+                String ACCESS_KEY = "S5tKcsxmxkF4U6RUxi65";
                 String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@hub.browserstack.com/wd/hub";
 
                 DesiredCapabilities caps = new DesiredCapabilities();
