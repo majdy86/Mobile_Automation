@@ -1,7 +1,5 @@
 package utils;
 
-import lombok.extern.java.Log;
-
 import java.io.IOException;
 import java.util.Properties;
 
@@ -16,7 +14,7 @@ public class PropManager {
 
         properties = new Properties();
         properties.load(getClass().getResourceAsStream("/environment.properties"));
-        properties.load(getClass().getResourceAsStream("/RunProperties.properties"));
+        properties.load(getClass().getResourceAsStream("/configration.properties"));
 
     }
 

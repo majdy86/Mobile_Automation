@@ -18,6 +18,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <envUrl>https://tmsqa.ureed.com/</envUrl>
         <browserToRun>chrome</browserToRun>
+        <LocalOrRemote>remote</LocalOrRemote>
     </properties>
 
     <dependencies>
