@@ -6,6 +6,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 
+import java.util.Map;
+
 public class SignupStepDefs {
 
     PageFactory pageFactory;
@@ -26,8 +28,15 @@ public class SignupStepDefs {
         pageFactory.signupPage().selectUserType(userType);
     }
 
-    @And("Fill the registration info")
-    public void fillTheRegistrationInfo() {
-        pageFactory.signupPage().filltheRegisterationInfoAndRegister();
+    @And("click on Next")
+    public void clickOnNext() {
+        pageFactory.signupPage().clickOnNext();
     }
+
+    @And("Fill the (.*) registration info")
+    public void fillTheRegistrationInfo(String scenarioCase , Map<String, String> registrationInfo) {
+        pageFactory.signupPage().filltheRegisterationInfo(registrationInfo);
+    }
+
+
 }

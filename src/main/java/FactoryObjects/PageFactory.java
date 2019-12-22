@@ -10,8 +10,8 @@ public class PageFactory {
     public DriverFactory driverFactory;
 
     public LoginPage loginPage;
-    public HomePage homePage;
-    public SignupPage signupPage;
+    private HomePage homePage;
+    private SignupPage signupPage;
 
     public PageFactory(DriverFactory driverFactory) {
         this.driverFactory = driverFactory;
