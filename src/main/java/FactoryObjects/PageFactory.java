@@ -1,13 +1,13 @@
 package FactoryObjects;
 
 
-import PageObjects.Login;
+import PageObjects.LoginPage;
 
 public class PageFactory {
 
     public DriverFactory driverFactory;
 
-    public Login loginPage;
+    public LoginPage loginPage;
 
 
     public PageFactory(DriverFactory driverFactory) {
@@ -15,8 +15,8 @@ public class PageFactory {
     }
 
 
-    public Login loginPage() throws Exception {
-            loginPage = new Login(driverFactory);
+    public LoginPage loginPage() throws Exception {
+            loginPage = new LoginPage(driverFactory);
             return loginPage;
     }
 

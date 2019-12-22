@@ -1,16 +1,15 @@
 package PageObjects;
 
+import FactoryObjects.DriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-public abstract class BasePageObject {
+abstract class BasePageObject {
 
-    /**
-     * Constructor
-     */
+    DriverFactory driverFactory;
+
     public BasePageObject(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-
 
 }
