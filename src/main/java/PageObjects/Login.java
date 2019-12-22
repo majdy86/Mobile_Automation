@@ -12,6 +12,7 @@ public class Login extends BasePageObject{
 
     @FindBy(name = "email")
     protected WebElement email;
+
     DriverFactory driver;
 
     public Login(DriverFactory driverFactory) throws Exception {
