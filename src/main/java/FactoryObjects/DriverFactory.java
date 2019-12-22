@@ -102,7 +102,7 @@ public class DriverFactory {
             //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             this.driver = driver;
         }
-
+//
     }
 
 }
