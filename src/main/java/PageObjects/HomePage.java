@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.PropManager;
 
-public class HomePage extends BasePageObject{
+public class HomePage extends BasePageObject {
 
     private String homePage = PropManager.getInstance().getProperty("env");
 
@@ -16,17 +16,17 @@ public class HomePage extends BasePageObject{
     protected WebElement signupHomePage;
 
 
-    public HomePage(DriverFactory driverFactory) throws Exception {
+    public HomePage(DriverFactory driverFactory) {
         super(driverFactory.getDriver());
         this.driver = driverFactory;
     }
 
-    public void navigateToHomePage() throws Exception {
+    public void navigateToHomePage() {
         driver.getDriver().get(homePage);
     }
 
-    public void signupFromHomePage() throws Exception {
+    public void signupFromHomePage() {
         //signupHomePage.click();
-        clickUsingJavaScriptExecutor(signupHomePage , driver.getDriver());
+        clickUsingJavaScriptExecutor(signupHomePage, driver.getDriver());
     }
 }

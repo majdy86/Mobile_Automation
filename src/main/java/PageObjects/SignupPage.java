@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.PropManager;
 
-public class SignupPage extends BasePageObject{
+public class SignupPage extends BasePageObject {
 
-     DriverFactory driver;
+    DriverFactory driver;
 
     @FindBy(id = "1")
     protected WebElement userTypePM;
@@ -38,27 +38,27 @@ public class SignupPage extends BasePageObject{
     @FindBy(xpath = "//input[@placeholder='Password Confirmation']")
     protected WebElement confirmPassword;
 
-    public SignupPage(DriverFactory driverFactory) throws Exception {
+    public SignupPage(DriverFactory driverFactory) {
         super(driverFactory.getDriver());
         this.driver = driverFactory;
     }
 
-    public void selectUserType(UserType userType) throws Exception {
-        switch (userType){
+    public void selectUserType(UserType userType) {
+        switch (userType) {
             case PM:
                 //userTypePM.click();
-                clickUsingJavaScriptExecutor(userTypePM , driver.getDriver());
+                clickUsingJavaScriptExecutor(userTypePM, driver.getDriver());
                 break;
             case Executor:
                 //userTypeExecutor.click();
-                clickUsingJavaScriptExecutor(userTypeExecutor , driver.getDriver());
+                clickUsingJavaScriptExecutor(userTypeExecutor, driver.getDriver());
                 break;
 
         }
         //Thread.sleep(5000);
     }
 
-    public void filltheRegisterationInfoAndRegister(){
+    public void filltheRegisterationInfoAndRegister() {
 
     }
 }

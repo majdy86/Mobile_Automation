@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import FactoryObjects.DriverFactory;
 import utils.PropManager;
 
-public class LoginPage extends BasePageObject{
+public class LoginPage extends BasePageObject {
 
     private String loginPageURL = PropManager.getInstance().getProperty("env") + PropManager.getInstance().getProperty("login.page");
 
@@ -22,12 +22,12 @@ public class LoginPage extends BasePageObject{
 
     DriverFactory driverFactory;
 
-    public LoginPage(DriverFactory driverFactory) throws Exception {
+    public LoginPage(DriverFactory driverFactory) {
         super(driverFactory.getDriver());
         this.driverFactory = driverFactory;
     }
 
-    public void navigateToLoginPage() throws Exception {
+    public void navigateToLoginPage() {
         driverFactory.getDriver().get(loginPageURL);
     }
 
@@ -39,8 +39,8 @@ public class LoginPage extends BasePageObject{
         password.sendKeys(userPassword);
     }
 
-    public void clickSignIn() throws Exception {
-        JavascriptExecutor executor = (JavascriptExecutor)driverFactory.getDriver();
+    public void clickSignIn() {
+        JavascriptExecutor executor = (JavascriptExecutor) driverFactory.getDriver();
         executor.executeScript("arguments[0].click();", signin);
     }
 

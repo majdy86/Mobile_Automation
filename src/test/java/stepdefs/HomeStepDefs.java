@@ -13,12 +13,12 @@ public class HomeStepDefs {
     }
 
     @Given("the user navigate to home page")
-    public void theUserNavigateToHomePage() throws Exception {
+    public void theUserNavigateToHomePage() {
         pageFactory.homePage().navigateToHomePage();
     }
 
     @And("click on Signup")
-    public void clickOnSignup() throws Exception {
+    public void clickOnSignup() {
         pageFactory.homePage().signupFromHomePage();
     }
 }

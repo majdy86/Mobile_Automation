@@ -18,21 +18,20 @@ public class PageFactory {
     }
 
 
-    public LoginPage loginPage() throws Exception {
-            loginPage = new LoginPage(driverFactory);
-            return loginPage;
+    public LoginPage loginPage() {
+        loginPage = new LoginPage(driverFactory);
+        return loginPage;
     }
 
-    public HomePage homePage() throws Exception {
+    public HomePage homePage() {
         homePage = new HomePage(driverFactory);
         return homePage;
     }
 
-    public SignupPage signupPage() throws Exception {
+    public SignupPage signupPage() {
         signupPage = new SignupPage(driverFactory);
         return signupPage;
     }
-
 
 
 }

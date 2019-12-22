@@ -12,33 +12,33 @@ public class LoginStepDefs {
     private String basePath = PropManager.getInstance().getProperty("login.base.path");
     PageFactory pageFactory;
 
-    public LoginStepDefs(PageFactory pageFactory){
+    public LoginStepDefs(PageFactory pageFactory) {
         this.pageFactory = pageFactory;
     }
 
     @Given("the user navigate to Login Page")
-    public void theUserNavigateToLoginPage() throws Exception {
+    public void theUserNavigateToLoginPage() {
 
         pageFactory.loginPage().navigateToLoginPage();
     }
 
     @And("fill the username field with (.*) (.*)")
-    public void setUsername(String unusedParam, String username){
+    public void setUsername(String unusedParam, String username) {
         pageFactory.loginPage.setEmail(username);
     }
 
     @And("fill the password field with (.*) (.*)")
-    public void setPassword(String unusedParam, String password){
+    public void setPassword(String unusedParam, String password) {
         pageFactory.loginPage.setPassword(password);
     }
 
     @When("the user clicks on sign in button")
-    public void clickSignin() throws Exception {
+    public void clickSignin() {
         pageFactory.loginPage.clickSignIn();
     }
 
     @Then("the user should be redirected to projects list page")
-    public void findFilterHeader(){
+    public void findFilterHeader() {
 
     }
 

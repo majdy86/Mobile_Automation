@@ -22,7 +22,7 @@ public class DriverFactory {
     private WebDriver driver;
     private Local local;
 
-    private void createDriver() throws Exception {
+    private void createDriver(){
         switch (EnvironmentType.getEnvironmentType()) {
             case LOCAL:
                 setWebDriver(createLocalDriver());
@@ -53,7 +53,7 @@ public class DriverFactory {
         return driver;
     }
 
-    public WebDriver createRemoteDriver() throws Exception {
+    public WebDriver createRemoteDriver() {
         String USERNAME = PropManager.getInstance().getProperty("browserstack_username");
         String ACCESS_KEY = PropManager.getInstance().getProperty("browserstack_access_key");
         String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@hub.browserstack.com/wd/hub";
@@ -64,19 +64,21 @@ public class DriverFactory {
         caps.setCapability("build","1.0");
         caps.setCapability("browserstack.debug", "true");
         caps.setCapability("browserstack.networkLogs", "true");
-
-        if (System.getProperty("local") != null && System.getProperty("local").equals("true")) {
-            caps.setCapability("browserstack.local", "true");
-            local = new Local();
-            Map<String, String> options = new HashMap<String, String>();
-            options.put("key", ACCESS_KEY);
-            local.start(options);
+        try{
+            if (System.getProperty("local") != null && System.getProperty("local").equals("true")) {
+                caps.setCapability("browserstack.local", "true");
+                local = new Local();
+                Map<String, String> options = new HashMap<String, String>();
+                options.put("key", ACCESS_KEY);
+                local.start(options);
+            }
+            return driver = new RemoteWebDriver(new URL(URL), caps);
+        }catch (Exception e){
+            throw new RuntimeException("Couldn't initialize Remote Driver");
         }
-        return driver = new RemoteWebDriver(new URL(URL), caps);
-
     }
 
-    public WebDriver getDriver() throws Exception {
+    public WebDriver getDriver()  {
         if (driver == null) {
             createDriver();
 

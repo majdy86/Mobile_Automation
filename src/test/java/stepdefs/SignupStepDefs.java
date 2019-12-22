@@ -10,20 +10,24 @@ public class SignupStepDefs {
 
     PageFactory pageFactory;
 
-    public SignupStepDefs(PageFactory pageFactory){
+    public SignupStepDefs(PageFactory pageFactory) {
         this.pageFactory = pageFactory;
     }
 
 
-
     @When("the user complete the sign-up workflow for a (.*)")
-    public void theUserCompleteTheSignUpWorkflowForAPM(UserType userType) throws Exception {
+    public void theUserCompleteTheSignUpWorkflowForAPM(UserType userType) {
         pageFactory.signupPage().selectUserType(userType);
 
     }
 
     @When("the user select (.*) as a user type")
-    public void theUserSelectPMAsAUserType(UserType userType) throws Exception {
+    public void theUserSelectPMAsAUserType(UserType userType) {
         pageFactory.signupPage().selectUserType(userType);
+    }
+
+    @And("Fill the registration info")
+    public void fillTheRegistrationInfo() {
+        pageFactory.signupPage().filltheRegisterationInfoAndRegister();
     }
 }
