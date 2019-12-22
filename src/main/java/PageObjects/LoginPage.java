@@ -40,7 +40,7 @@ public class LoginPage extends BasePageObject{
     }
 
     public void clickSignIn() throws Exception {
-        JavascriptExecutor executor = (JavascriptExecutor)driver.getDriver();
+        JavascriptExecutor executor = (JavascriptExecutor)driverFactory.getDriver();
         executor.executeScript("arguments[0].click();", signin);
     }
 
