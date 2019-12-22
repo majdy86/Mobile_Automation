@@ -12,8 +12,6 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
-
 
 public class Hooks {
 
@@ -25,6 +23,7 @@ public class Hooks {
 
     @Before
     public void setup() {
+
     }
 
     @After
