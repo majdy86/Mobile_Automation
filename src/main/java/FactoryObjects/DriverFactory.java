@@ -15,6 +15,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class DriverFactory {
 
@@ -78,11 +79,25 @@ public class DriverFactory {
     public WebDriver getDriver() throws Exception {
         if (driver == null) {
             createDriver();
+
         }
+        driver.manage().timeouts().implicitlyWait(getImplicitlyWait(), TimeUnit.SECONDS);
         return driver;
     }
 
-    private void setWebDriver(WebDriver driver) {
+    public long getImplicitlyWait(){
+        String implicitlyWait = PropManager.getInstance().getProperty("implicitlyWait");
+        if(implicitlyWait != null){
+            try{
+                return Long.parseLong(implicitlyWait);
+            }catch(NumberFormatException e){
+                throw new RuntimeException("Not able to parse value: " + implicitlyWait);
+            }
+        }
+        return 30;
+    }
+
+        private void setWebDriver(WebDriver driver) {
         if (driver != null) {
             //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             this.driver = driver;
