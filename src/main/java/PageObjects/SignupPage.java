@@ -5,11 +5,17 @@ import enums.UserType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.PropManager;
+
+import java.util.Map;
 
 public class SignupPage extends BasePageObject {
 
-    DriverFactory driver;
+    DriverFactory driverFactory;
 
     @FindBy(id = "1")
     protected WebElement userTypePM;
@@ -40,25 +46,46 @@ public class SignupPage extends BasePageObject {
 
     public SignupPage(DriverFactory driverFactory) {
         super(driverFactory.getDriver());
-        this.driver = driverFactory;
+        this.driverFactory = driverFactory;
     }
 
     public void selectUserType(UserType userType) {
         switch (userType) {
             case PM:
                 //userTypePM.click();
-                clickUsingJavaScriptExecutor(userTypePM, driver.getDriver());
+                clickUsingJavaScriptExecutor(userTypePM, driverFactory.getDriver());
                 break;
             case Executor:
                 //userTypeExecutor.click();
-                clickUsingJavaScriptExecutor(userTypeExecutor, driver.getDriver());
+                clickUsingJavaScriptExecutor(userTypeExecutor, driverFactory.getDriver());
                 break;
 
         }
         //Thread.sleep(5000);
     }
 
-    public void filltheRegisterationInfoAndRegister() {
+    public void filltheRegisterationInfo(Map<String, String> registrationInfo) {
+        WebDriverWait wait = driverFactory.getwaitExplicit(driverFactory.getDriver());
+        wait.until(ExpectedConditions.visibilityOf(email)).sendKeys(System.currentTimeMillis() + registrationInfo.get("email"));
+        wait.until(ExpectedConditions.visibilityOf(firstName)).sendKeys(registrationInfo.get("firstName"));
+        wait.until(ExpectedConditions.visibilityOf(lastName)).sendKeys(registrationInfo.get("lastName"));
+        wait.until(ExpectedConditions.visibilityOf(lastName)).sendKeys(registrationInfo.get("lastName"));
+        wait.until(ExpectedConditions.visibilityOf(password)).sendKeys(registrationInfo.get("password"));
+        wait.until(ExpectedConditions.visibilityOf(confirmPassword)).sendKeys(registrationInfo.get("confirmPassword"));
+
+
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void clickOnNext(){
+
+        driverFactory.getwaitExplicit(driverFactory.getDriver()).until(ExpectedConditions.visibilityOf(next));
+        clickUsingJavaScriptExecutor(next, driverFactory.getDriver());
 
     }
+
 }

@@ -20,6 +20,7 @@
         <browserToRun>chrome</browserToRun>
         <LocalOrRemote>local</LocalOrRemote>
         <implicitlyWait>30</implicitlyWait>
+        <explicitlyWait>30</explicitlyWait>
     </properties>
 
     <dependencies>

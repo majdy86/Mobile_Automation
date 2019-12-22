@@ -9,10 +9,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.PropManager;
 
 import java.io.File;
 import java.net.URL;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -20,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class DriverFactory {
 
     private WebDriver driver;
+    public WebDriverWait waitExplicit;
     private Local local;
 
     private void createDriver(){
@@ -84,11 +87,24 @@ public class DriverFactory {
 
         }
         driver.manage().timeouts().implicitlyWait(getImplicitlyWait(), TimeUnit.SECONDS);
+       // waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(getExplicitlyWait()));
         return driver;
     }
 
     public long getImplicitlyWait(){
         String implicitlyWait = PropManager.getInstance().getProperty("implicitlyWait");
+        if(implicitlyWait != null){
+            try{
+                return Long.parseLong(implicitlyWait);
+            }catch(NumberFormatException e){
+                throw new RuntimeException("Not able to parse value: " + implicitlyWait);
+            }
+        }
+        return 30;
+    }
+
+    public long getExplicitlyWait(){
+        String implicitlyWait = PropManager.getInstance().getProperty("explicitlyWait");
         if(implicitlyWait != null){
             try{
                 return Long.parseLong(implicitlyWait);
@@ -105,6 +121,15 @@ public class DriverFactory {
             this.driver = driver;
         }
 //
+    }
+
+  public WebDriverWait getwaitExplicit(WebDriver driver)  {
+        if (waitExplicit == null) {
+
+            waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(getExplicitlyWait()));
+        }
+       return waitExplicit;
+
     }
 
 }
