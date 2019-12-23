@@ -9,7 +9,7 @@ import utils.PropManager;
 
 
 public class LoginStepDefs {
-    private String basePath = PropManager.getInstance().getProperty("login.base.path");
+
     PageFactory pageFactory;
 
     public LoginStepDefs(PageFactory pageFactory){
@@ -19,7 +19,7 @@ public class LoginStepDefs {
     @Given("the user navigate to Login Page")
     public void theUserNavigateToLoginPage() throws Exception {
 
-        pageFactory.loginPage().navigateToLoginPage();
+        pageFactory.loginPage.navigateToLoginPage();
     }
 
     @And("fill the username field with (.*) (.*)")

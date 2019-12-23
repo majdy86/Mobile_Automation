@@ -17,7 +17,7 @@ public class LoginPage extends BasePageObject{
     @FindBy(name = "password")
     private WebElement password;
 
-    @FindBy(xpath = "//button[@class='asdfasdf']")
+    @FindBy(xpath = "//button[@class='b-btn-standart']")
     private WebElement signin;
 
     DriverFactory driverFactory;

@@ -16,6 +16,11 @@ public class ProjectsListPage extends BasePageObject {
         this.driverFactory = driverFactory;
     }
 
+    public void displayProjectsList(){
+        filterText.isDisplayed();
+        System.out.println(filterText.isDisplayed());
+    }
+
 
 
 

@@ -19,7 +19,7 @@
         <envUrl>https://tmsqa.ureed.com/</envUrl>
         <browserToRun>chrome</browserToRun>
         <LocalOrRemote>local</LocalOrRemote>
-        <implicitlyWait>30</implicitlyWait>
+        <implicitlyWait>20</implicitlyWait>
     </properties>
 
     <dependencies>
