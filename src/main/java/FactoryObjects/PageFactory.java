@@ -1,17 +1,24 @@
 package FactoryObjects;
 
 
-import PageObjects.HomePage;
-import PageObjects.LoginPage;
-import PageObjects.SignupPage;
+import PageObjects.*;
 
 public class PageFactory {
 
     public DriverFactory driverFactory;
 
-    public LoginPage loginPage;
+    private LoginPage loginPage;
     private HomePage homePage;
     private SignupPage signupPage;
+    private ProjectsListPage projectsListPage;
+    private CreateProjectPage createProjectPage;
+    private InvitePage  invitePage;
+    private ProjectDetailsPage projectDetailsPage;
+    private TermBasePage termBasePage;
+    private TranslationMemoryPage translationMemoryPage;
+    private WorkspacePage workspacePage;
+    private SettingsPage settingsPage;
+    private ProfilePage profilePage;
 
     public PageFactory(DriverFactory driverFactory) {
         this.driverFactory = driverFactory;
@@ -19,19 +26,71 @@ public class PageFactory {
 
 
     public LoginPage loginPage() {
-        loginPage = new LoginPage(driverFactory);
+        if(loginPage == null)
+            loginPage = new LoginPage(driverFactory);
         return loginPage;
     }
 
     public HomePage homePage() {
-        homePage = new HomePage(driverFactory);
+        if(homePage == null)
+            homePage = new HomePage(driverFactory);
         return homePage;
     }
 
     public SignupPage signupPage() {
-        signupPage = new SignupPage(driverFactory);
+        if(signupPage == null)
+            signupPage = new SignupPage(driverFactory);
         return signupPage;
     }
+
+    public ProjectsListPage projectsListPage(){
+        if(projectsListPage == null)
+            projectsListPage = new ProjectsListPage(driverFactory);
+        return projectsListPage;
+    }
+
+    public CreateProjectPage createProjectPage(){
+        if(createProjectPage == null)
+            createProjectPage = new CreateProjectPage(driverFactory);
+        return createProjectPage;
+    }
+
+    public InvitePage invitePage(){
+        if(invitePage == null)
+            invitePage = new InvitePage(driverFactory);
+        return invitePage;
+    }
+
+    public TermBasePage termBasePage(){
+        if(termBasePage == null)
+            termBasePage = new TermBasePage(driverFactory);
+        return termBasePage;
+    }
+
+    public TranslationMemoryPage translationMemoryPage(){
+        if(translationMemoryPage == null)
+            translationMemoryPage = new TranslationMemoryPage(driverFactory);
+        return translationMemoryPage;
+    }
+
+    public WorkspacePage workspacePage(){
+        if(workspacePage == null)
+            workspacePage = new WorkspacePage(driverFactory);
+        return workspacePage;
+    }
+
+    public SettingsPage settingsPage(){
+        if(settingsPage == null)
+            settingsPage = new SettingsPage(driverFactory);
+        return settingsPage;
+    }
+
+    public ProfilePage profilePage(){
+        if(profilePage == null)
+            profilePage = new ProfilePage(driverFactory);
+        return profilePage;
+    }
+
 
 
 }

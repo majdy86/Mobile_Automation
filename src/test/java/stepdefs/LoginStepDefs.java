@@ -19,22 +19,22 @@ public class LoginStepDefs {
     @Given("the user navigate to Login Page")
     public void theUserNavigateToLoginPage() {
 
-        pageFactory.loginPage.navigateToLoginPage();
+        pageFactory.loginPage().navigateToLoginPage();
     }
 
     @And("fill the username field with (.*) (.*)")
     public void setUsername(String unusedParam, String username) {
-        pageFactory.loginPage.setEmail(username);
+        pageFactory.loginPage().setEmail(username);
     }
 
     @And("fill the password field with (.*) (.*)")
     public void setPassword(String unusedParam, String password) {
-        pageFactory.loginPage.setPassword(password);
+        pageFactory.loginPage().setPassword(password);
     }
 
     @When("the user clicks on sign in button")
     public void clickSignin() {
-        pageFactory.loginPage.clickSignIn();
+        pageFactory.loginPage().clickSignIn();
     }
 
     @Then("the user should be redirected to projects list page")
