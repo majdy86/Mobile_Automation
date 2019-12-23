@@ -8,7 +8,7 @@ public class ProjectsListPage extends BasePageObject {
 
     DriverFactory driverFactory;
 
-    @FindBy(name = "Filter")
+    @FindBy(xpath = "//div[@class='row justify-content-center sett-elems reverse']//h2[@class='title big-type-title'][contains(text(),'Filter')]")
     private WebElement filterText;
 
     public ProjectsListPage(DriverFactory driverFactory) {
@@ -16,9 +16,8 @@ public class ProjectsListPage extends BasePageObject {
         this.driverFactory = driverFactory;
     }
 
-    public void displayProjectsList(){
+    public void checkFilterHeader(){
         filterText.isDisplayed();
-        System.out.println(filterText.isDisplayed());
     }
 
 

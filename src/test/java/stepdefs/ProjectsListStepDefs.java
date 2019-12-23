@@ -12,8 +12,8 @@ public class ProjectsListStepDefs {
     }
 
     @Then("The it should redirect me to project lists")
-    public void displayProjectsList(){
-        pageFactory.projectsListPage().displayProjectsList();
+    public void checkFilterHeader(){
+        pageFactory.projectsListPage().checkFilterHeader();
     }
 
 

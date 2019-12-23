@@ -1,6 +1,6 @@
 package PageObjects;
 
-import org.openqa.selenium.By;
+import static org.junit.Assert.*;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +19,9 @@ public class LoginPage extends BasePageObject {
 
     @FindBy(xpath = "//button[@class='b-btn-standart']")
     private WebElement signin;
+
+    @FindBy(xpath = "//div[@class='alert alert-danger alert-dark']")
+    private WebElement errorMessage;
 
     DriverFactory driverFactory;
 
@@ -44,4 +47,16 @@ public class LoginPage extends BasePageObject {
         executor.executeScript("arguments[0].click();", signin);
     }
 
+
+    public void invalidCredentialsErrMsg() {
+        assertEquals(PropManager.getInstance().getProperty("signin_invalidcredentials_error_message"), errorMessage.getText());
+    }
+
+    public void checkUsernameRequired(){
+        assertTrue(Boolean.parseBoolean(email.getAttribute("Required")));
+    }
+
+    public void checkPasswordRequired(){
+        assertTrue(Boolean.parseBoolean(password.getAttribute("required")));
+    }
 }

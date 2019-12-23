@@ -19,7 +19,7 @@
         <envUrl>https://tmsqa.ureed.com/</envUrl>
         <browserToRun>chrome</browserToRun>
         <LocalOrRemote>local</LocalOrRemote>
-        <implicitlyWait>20</implicitlyWait>
+        <implicitlyWait>10</implicitlyWait>
     </properties>
 
     <dependencies>
@@ -32,7 +32,13 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>${cucumber.version}</version>
+            <version>4.7.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber4-jvm -->

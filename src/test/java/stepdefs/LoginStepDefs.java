@@ -39,7 +39,22 @@ public class LoginStepDefs {
 
     @Then("the user should be redirected to projects list page")
     public void findFilterHeader() {
+        pageFactory.projectsListPage().checkFilterHeader();
+    }
 
+    @Then("the following error message should displays \"These credentials do not match our records.\"")
+    public void invalidPasswordErrMsg(){
+        pageFactory.loginPage().invalidCredentialsErrMsg();
+    }
+
+    @Then("the user should get a message that password is required")
+    public void checkEmptyPassword(){
+        pageFactory.loginPage().checkPasswordRequired();
+    }
+
+    @Then("the user should get a message that username is required")
+    public void checkEmptyUsername(){
+        pageFactory.loginPage().checkUsernameRequired();
     }
 
 
