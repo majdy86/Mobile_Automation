@@ -1,35 +1,37 @@
 package FactoryObjects;
 
 
+import PageObjects.HomePage;
 import PageObjects.LoginPage;
-import PageObjects.ProjectsListPage;
+import PageObjects.SignupPage;
 
 public class PageFactory {
 
     public DriverFactory driverFactory;
 
-    private LoginPage loginPage;
-    private ProjectsListPage projectsListPage;
-
+    public LoginPage loginPage;
+    private HomePage homePage;
+    private SignupPage signupPage;
 
     public PageFactory(DriverFactory driverFactory) {
         this.driverFactory = driverFactory;
     }
 
 
-    public LoginPage loginPage() throws Exception {
-            loginPage = new LoginPage(driverFactory);
-            return loginPage;
+    public LoginPage loginPage() {
+        loginPage = new LoginPage(driverFactory);
+        return loginPage;
     }
 
-    public ProjectsListPage projectsListPage() throws Exception{
-        projectsListPage = new ProjectsListPage(driverFactory);
-        return projectsListPage;
+    public HomePage homePage() {
+        homePage = new HomePage(driverFactory);
+        return homePage;
     }
 
-
-
-
+    public SignupPage signupPage() {
+        signupPage = new SignupPage(driverFactory);
+        return signupPage;
+    }
 
 
 }

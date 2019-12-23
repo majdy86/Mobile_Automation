@@ -9,10 +9,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.PropManager;
 
 import java.io.File;
 import java.net.URL;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -20,9 +22,10 @@ import java.util.concurrent.TimeUnit;
 public class DriverFactory {
 
     private WebDriver driver;
+    public WebDriverWait waitExplicit;
     private Local local;
 
-    private void createDriver() throws Exception {
+    private void createDriver(){
         switch (EnvironmentType.getEnvironmentType()) {
             case LOCAL:
                 setWebDriver(createLocalDriver());
@@ -53,7 +56,7 @@ public class DriverFactory {
         return driver;
     }
 
-    public WebDriver createRemoteDriver() throws Exception {
+    public WebDriver createRemoteDriver() {
         String USERNAME = PropManager.getInstance().getProperty("browserstack_username");
         String ACCESS_KEY = PropManager.getInstance().getProperty("browserstack_access_key");
         String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@hub.browserstack.com/wd/hub";
@@ -64,24 +67,27 @@ public class DriverFactory {
         caps.setCapability("build","1.0");
         caps.setCapability("browserstack.debug", "true");
         caps.setCapability("browserstack.networkLogs", "true");
-
-        if (System.getProperty("local") != null && System.getProperty("local").equals("true")) {
-            caps.setCapability("browserstack.local", "true");
-            local = new Local();
-            Map<String, String> options = new HashMap<String, String>();
-            options.put("key", ACCESS_KEY);
-            local.start(options);
+        try{
+            if (System.getProperty("local") != null && System.getProperty("local").equals("true")) {
+                caps.setCapability("browserstack.local", "true");
+                local = new Local();
+                Map<String, String> options = new HashMap<String, String>();
+                options.put("key", ACCESS_KEY);
+                local.start(options);
+            }
+            return driver = new RemoteWebDriver(new URL(URL), caps);
+        }catch (Exception e){
+            throw new RuntimeException("Couldn't initialize Remote Driver");
         }
-        return driver = new RemoteWebDriver(new URL(URL), caps);
-
     }
 
-    public WebDriver getDriver() throws Exception {
+    public WebDriver getDriver()  {
         if (driver == null) {
             createDriver();
 
         }
         driver.manage().timeouts().implicitlyWait(getImplicitlyWait(), TimeUnit.SECONDS);
+       // waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(getExplicitlyWait()));
         return driver;
     }
 
@@ -97,11 +103,32 @@ public class DriverFactory {
         return 30;
     }
 
+    public long getExplicitlyWait(){
+        String implicitlyWait = PropManager.getInstance().getProperty("explicitlyWait");
+        if(implicitlyWait != null){
+            try{
+                return Long.parseLong(implicitlyWait);
+            }catch(NumberFormatException e){
+                throw new RuntimeException("Not able to parse value: " + implicitlyWait);
+            }
+        }
+        return 30;
+    }
+
         private void setWebDriver(WebDriver driver) {
         if (driver != null) {
             //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             this.driver = driver;
         }
+//
+    }
+
+  public WebDriverWait getwaitExplicit(WebDriver driver)  {
+        if (waitExplicit == null) {
+
+            waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(getExplicitlyWait()));
+        }
+       return waitExplicit;
 
     }
 

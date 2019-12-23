@@ -11,7 +11,7 @@ public class ProjectsListPage extends BasePageObject {
     @FindBy(name = "Filter")
     private WebElement filterText;
 
-    public ProjectsListPage(DriverFactory driverFactory) throws Exception {
+    public ProjectsListPage(DriverFactory driverFactory) {
         super(driverFactory.getDriver());
         this.driverFactory = driverFactory;
     }
@@ -20,8 +20,6 @@ public class ProjectsListPage extends BasePageObject {
         filterText.isDisplayed();
         System.out.println(filterText.isDisplayed());
     }
-
-
 
 
 }
