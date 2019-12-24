@@ -14,6 +14,11 @@ public abstract class BasePageObject {
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     *
+     * @param element
+     * @param driver
+     */
     public void clickUsingJavaScriptExecutor(WebElement element, WebDriver driver) {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", element);

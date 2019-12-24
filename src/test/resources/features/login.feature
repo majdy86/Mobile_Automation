@@ -23,7 +23,7 @@ Feature: Login
       |username|password|
       |MAJDI.EXECUTOR.AMAL.PM@GMAIL.COM|123456|
 
-  @Positive @Smoke
+  @Smoke
   Scenario Outline: login with valid project manager
     Given the user navigate to Login Page
     And fill the username field with a valid project manager email <username>

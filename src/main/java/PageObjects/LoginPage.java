@@ -2,6 +2,7 @@ package PageObjects;
 
 import static org.junit.Assert.*;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import FactoryObjects.DriverFactory;
@@ -23,15 +24,15 @@ public class LoginPage extends BasePageObject {
     @FindBy(xpath = "//div[@class='alert alert-danger alert-dark']")
     private WebElement errorMessage;
 
-    DriverFactory driverFactory;
+    WebDriver driver;
 
     public LoginPage(DriverFactory driverFactory) {
         super(driverFactory.getDriver());
-        this.driverFactory = driverFactory;
+        this.driver = driverFactory.getDriver();
     }
 
     public void navigateToLoginPage() {
-        driverFactory.getDriver().get(loginPageURL);
+        driver.get(loginPageURL);
     }
 
     public void setEmail(String userEmail) {
@@ -43,8 +44,7 @@ public class LoginPage extends BasePageObject {
     }
 
     public void clickSignIn() {
-        JavascriptExecutor executor = (JavascriptExecutor) driverFactory.getDriver();
-        executor.executeScript("arguments[0].click();", signin);
+        clickUsingJavaScriptExecutor(signin,driver);
     }
 
 
@@ -57,6 +57,6 @@ public class LoginPage extends BasePageObject {
     }
 
     public void checkPasswordRequired(){
-        assertTrue(Boolean.parseBoolean(password.getAttribute("required")));
+        assertTrue(Boolean.parseBoolean(password.getAttribute("Required")));
     }
 }

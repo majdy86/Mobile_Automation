@@ -87,7 +87,6 @@ public class DriverFactory {
 
         }
         driver.manage().timeouts().implicitlyWait(getImplicitlyWait(), TimeUnit.SECONDS);
-       // waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(getExplicitlyWait()));
         return driver;
     }
 
@@ -104,12 +103,12 @@ public class DriverFactory {
     }
 
     public long getExplicitlyWait(){
-        String implicitlyWait = PropManager.getInstance().getProperty("explicitlyWait");
-        if(implicitlyWait != null){
+        String explicitlyWait = PropManager.getInstance().getProperty("explicitlyWait");
+        if(explicitlyWait != null){
             try{
-                return Long.parseLong(implicitlyWait);
+                return Long.parseLong(explicitlyWait);
             }catch(NumberFormatException e){
-                throw new RuntimeException("Not able to parse value: " + implicitlyWait);
+                throw new RuntimeException("Not able to parse value: " + explicitlyWait);
             }
         }
         return 30;
@@ -117,10 +116,8 @@ public class DriverFactory {
 
         private void setWebDriver(WebDriver driver) {
         if (driver != null) {
-            //driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             this.driver = driver;
         }
-//
     }
 
   public WebDriverWait getwaitExplicit(WebDriver driver)  {
