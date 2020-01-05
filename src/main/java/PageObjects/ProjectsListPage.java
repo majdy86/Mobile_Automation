@@ -8,7 +8,7 @@ public class ProjectsListPage extends BasePageObject {
 
     DriverFactory driverFactory;
 
-    @FindBy(xpath = "//div[@class='row justify-content-center sett-elems reverse']//h2[@class='title big-type-title'][contains(text(),'Filter')]")
+    @FindBy(className = "projects-cat-list")
     private WebElement filterText;
 
     public ProjectsListPage(DriverFactory driverFactory) {

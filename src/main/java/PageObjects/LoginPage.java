@@ -1,7 +1,7 @@
 package PageObjects;
 
 import static org.junit.Assert.*;
-import org.openqa.selenium.JavascriptExecutor;
+import static org.hamcrest.CoreMatchers.containsString;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,13 +12,13 @@ public class LoginPage extends BasePageObject {
 
     private String loginPageURL = PropManager.getInstance().getProperty("env") + PropManager.getInstance().getProperty("login.page");
 
-    @FindBy(name = "email")
+    @FindBy(id = "signin-email")
     private WebElement email;
 
-    @FindBy(name = "password")
+    @FindBy(id = "signin-password")
     private WebElement password;
 
-    @FindBy(xpath = "//button[@class='b-btn-standart']")
+    @FindBy(id = "signin-btn-submit")
     private WebElement signin;
 
     @FindBy(xpath = "//div[@class='alert alert-danger alert-dark']")
@@ -49,7 +49,7 @@ public class LoginPage extends BasePageObject {
 
 
     public void invalidCredentialsErrMsg() {
-        assertEquals(PropManager.getInstance().getProperty("signin_invalidcredentials_error_message"), errorMessage.getText());
+        assertThat(errorMessage.getText(),containsString(PropManager.getInstance().getProperty("signin_invalidcredentials_error_message")));
     }
 
     public void checkUsernameRequired(){
