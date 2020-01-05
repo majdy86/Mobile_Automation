@@ -53,6 +53,7 @@ public class DriverFactory {
             case SAFARI:
                 break;
         }
+        driver.manage().window().maximize();
         return driver;
     }
 

@@ -15,12 +15,12 @@ public abstract class BasePageObject {
     }
 
     /**
-     *
      * @param element
      * @param driver
      */
     public void clickUsingJavaScriptExecutor(WebElement element, WebDriver driver) {
         JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].scrollIntoView(true);", element);
         executor.executeScript("arguments[0].click();", element);
     }
 }

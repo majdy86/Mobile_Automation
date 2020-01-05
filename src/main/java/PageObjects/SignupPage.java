@@ -2,6 +2,8 @@ package PageObjects;
 
 import FactoryObjects.DriverFactory;
 import enums.UserType;
+import net.bytebuddy.implementation.bytecode.Throw;
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,81 +13,76 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.PropManager;
 
+import java.time.Duration;
 import java.util.Map;
 
 public class SignupPage extends BasePageObject {
 
-    DriverFactory driverFactory;
-
-    @FindBy(id = "1")
-    protected WebElement userTypePM;
-
-    @FindBy(id = "2")
-    protected WebElement userTypeExecutor;
-
-    @FindBy(xpath = "//button[contains(@class,'b-btn-standart role-btn')]")
-    protected WebElement next;
-
-    @FindBy(xpath = "//input[@placeholder='Email']")
+    @FindBy(id = "signup-email")
     protected WebElement email;
 
-    @FindBy(xpath = "//input[@id='first_name']")
+    @FindBy(id = "first_name")
     protected WebElement firstName;
 
-    @FindBy(xpath = "//input[@id='last_name']")
+    @FindBy(id = "last_name")
     protected WebElement lastName;
 
-    @FindBy(name = "timezone")
+    @FindBy(id = "signup-tzone")
     protected WebElement timezone;
 
-    @FindBy(xpath = "//input[@placeholder='Password']")
+    @FindBy(id = "signup-password")
     protected WebElement password;
 
-    @FindBy(xpath = "//input[@placeholder='Password Confirmation']")
+    @FindBy(id = "signup-rpassword")
     protected WebElement confirmPassword;
+
+    @FindBy(id = "type5")
+    protected WebElement agreeTerms;
+
+    @FindBy(id = "reg")
+    protected WebElement register;
+
+    WebDriver driver;
 
     public SignupPage(DriverFactory driverFactory) {
         super(driverFactory.getDriver());
-        this.driverFactory = driverFactory;
+        this.driver = driverFactory.getDriver();
     }
 
-    public void selectUserType(UserType userType) {
-        switch (userType) {
-            case PM:
-                //userTypePM.click();
-                clickUsingJavaScriptExecutor(userTypePM, driverFactory.getDriver());
-                break;
-            case Executor:
-                //userTypeExecutor.click();
-                clickUsingJavaScriptExecutor(userTypeExecutor, driverFactory.getDriver());
-                break;
-
-        }
-        //Thread.sleep(5000);
-    }
 
     public void filltheRegisterationInfo(Map<String, String> registrationInfo) {
-        WebDriverWait wait = driverFactory.getwaitExplicit(driverFactory.getDriver());
-        wait.until(ExpectedConditions.visibilityOf(email)).sendKeys(System.currentTimeMillis() + registrationInfo.get("email"));
-        wait.until(ExpectedConditions.visibilityOf(firstName)).sendKeys(registrationInfo.get("firstName"));
-        wait.until(ExpectedConditions.visibilityOf(lastName)).sendKeys(registrationInfo.get("lastName"));
-        wait.until(ExpectedConditions.visibilityOf(lastName)).sendKeys(registrationInfo.get("lastName"));
-        wait.until(ExpectedConditions.visibilityOf(password)).sendKeys(registrationInfo.get("password"));
-        wait.until(ExpectedConditions.visibilityOf(confirmPassword)).sendKeys(registrationInfo.get("confirmPassword"));
 
+        email.sendKeys(System.currentTimeMillis() + registrationInfo.get("email"));
+        firstName.sendKeys(registrationInfo.get("firstName"));
+        lastName.sendKeys(registrationInfo.get("lastName"));
+        password.sendKeys(registrationInfo.get("password"));
+        confirmPassword.sendKeys(registrationInfo.get("confirmPassword"));
 
+        Select timeZone = new Select(timezone);
+        timeZone.selectByVisibleText(registrationInfo.get("timeZone"));
+
+    }
+
+    public void agreeToTerms() {
+
+        clickUsingJavaScriptExecutor(agreeTerms, driver);
+    }
+
+    public void clickOnRegister() {
+        // register.click();
+        clickUsingJavaScriptExecutor(register, driver);
+    }
+
+    public void checkRegisterButtonIsNotDisplayed() {
         try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+            wait.until(ExpectedConditions.invisibilityOf(register));
+        } catch (Exception e) {
+            Assert.fail("Register Button is Not Clickable");
         }
     }
 
-    public void clickOnNext(){
-
-        driverFactory.getwaitExplicit(driverFactory.getDriver()).until(ExpectedConditions.visibilityOf(next));
-        clickUsingJavaScriptExecutor(next, driverFactory.getDriver());
+    public void checkTheUserIsONActivationPage() {
 
     }
-
 }
