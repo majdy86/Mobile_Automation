@@ -52,7 +52,7 @@ public class DriverFactory {
                 System.setProperty("webdriver.chrome.driver", "drivers" + File.separator+ "chrome" + File.separator + PropManager.getInstance().getProperty("chrome_filename" + OSPath));
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--headless");
-                options.addArguments('--no-sandbox');
+                options.addArguments("--no-sandbox");
                 driver = new ChromeDriver();
                 break;
             case FIREFOX:
