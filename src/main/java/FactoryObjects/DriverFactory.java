@@ -52,8 +52,7 @@ public class DriverFactory {
                 options.addArguments("--no-sandbox");
                 options.addArguments("--disable-dev-shm-usage");
                 System.setProperty("webdriver.chrome.driver", "drivers" + File.separator+ "chrome" + File.separator + PropManager.getInstance().getProperty("chrome_filename" + OSPath));
-                System.out.println("webdriver.chrome.driver:" + System.getProperty("webdriver.chrome.driver"));
-                driver = new ChromeDriver();
+                driver = new ChromeDriver(options);
                 break;
             case FIREFOX:
                 System.setProperty("webdriver.gecko.driver", "drivers/fireFox/geckodriver.exe");
