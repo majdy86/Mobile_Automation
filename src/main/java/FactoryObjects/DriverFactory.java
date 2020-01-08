@@ -6,6 +6,7 @@ import enums.EnvironmentType;
 import org.apache.commons.lang3.SystemUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -47,7 +48,11 @@ public class DriverFactory {
             OSPath = "_linux";
         switch (DriverType.getBrowser()) {
             case CHROME:
+
                 System.setProperty("webdriver.chrome.driver", "drivers" + File.separator+ "chrome" + File.separator + PropManager.getInstance().getProperty("chrome_filename" + OSPath));
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless");
+                options.addArguments('--no-sandbox');
                 driver = new ChromeDriver();
                 break;
             case FIREFOX:
