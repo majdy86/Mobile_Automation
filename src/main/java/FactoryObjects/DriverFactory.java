@@ -53,8 +53,8 @@ public class DriverFactory {
                 options.addArguments("start-maximized"); // open Browser in maximized mode
                 options.addArguments("disable-infobars"); // disabling infobars
                 options.addArguments("--disable-extensions"); // disabling extensions
-                options.addArguments("--disable-gpu"); // applicable to windows os only
                 options.addArguments("--no-sandbox"); // Bypass OS security model
+                options.addArguments("--headless");
                 System.setProperty("webdriver.chrome.driver", "drivers" + File.separator+ "chrome" + File.separator + PropManager.getInstance().getProperty("chrome_filename" + OSPath));
                 driver = new ChromeDriver(options);
                 break;
