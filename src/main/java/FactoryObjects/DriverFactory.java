@@ -38,16 +38,16 @@ public class DriverFactory {
 
 
     private WebDriver createLocalDriver() {
-        String windowsPath = "";
+        String OSPath = "";
         System.out.println("OS_Name:" + SystemUtils.OS_NAME + " OS_Vresion:" + SystemUtils.OS_VERSION);
         if(SystemUtils.OS_NAME.contains("Window"))
-            windowsPath = "_windows";
+            OSPath = "_windows";
 
         if(SystemUtils.OS_NAME.contains("Linux"))
-            windowsPath = "_linux";
+            OSPath = "_linux";
         switch (DriverType.getBrowser()) {
             case CHROME:
-                System.setProperty("webdriver.chrome.driver", "drivers" + File.separator+ "chrome" + File.separator + PropManager.getInstance().getProperty("chrome_filename" + windowsPath));
+                System.setProperty("webdriver.chrome.driver", "drivers" + File.separator+ "chrome" + File.separator + PropManager.getInstance().getProperty("chrome_filename" + OSPath));
                 driver = new ChromeDriver();
                 break;
             case FIREFOX:

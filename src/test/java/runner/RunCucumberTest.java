@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty", "io.qameta.allure.cucumber4jvm.AllureCucumber4Jvm", "junit:target/surefire-reports/Cucumber.xml", "html:target"},
         glue = {"stepdefs"},
         features = "src/test/resources/features",
-         tags = "@Signup"
+         tags = "@Smoke"
  )
 public class RunCucumberTest {
 }
