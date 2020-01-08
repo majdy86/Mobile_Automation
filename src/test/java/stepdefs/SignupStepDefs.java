@@ -3,7 +3,6 @@ package stepdefs;
 import FactoryObjects.PageFactory;
 import enums.UserType;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 

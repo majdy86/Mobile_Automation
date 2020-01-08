@@ -39,6 +39,7 @@ public class DriverFactory {
 
     private WebDriver createLocalDriver() {
         String windowsPath = "";
+        System.out.println("OS_Name:" + SystemUtils.OS_NAME + " OS_Vresion:" + SystemUtils.OS_VERSION);
         if(SystemUtils.OS_NAME.contains("Window"))
             windowsPath = "_windows";
         switch (DriverType.getBrowser()) {
