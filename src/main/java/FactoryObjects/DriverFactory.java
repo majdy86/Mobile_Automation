@@ -48,11 +48,10 @@ public class DriverFactory {
             OSPath = "_linux";
         switch (DriverType.getBrowser()) {
             case CHROME:
-
-                System.setProperty("webdriver.chrome.driver", "drivers" + File.separator+ "chrome" + File.separator + PropManager.getInstance().getProperty("chrome_filename" + OSPath));
                 ChromeOptions options = new ChromeOptions();
-                options.addArguments("--headless");
                 options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                System.setProperty("webdriver.chrome.driver", "drivers" + File.separator+ "chrome" + File.separator + PropManager.getInstance().getProperty("chrome_filename" + OSPath));
                 driver = new ChromeDriver();
                 break;
             case FIREFOX:
