@@ -50,9 +50,9 @@ public class DriverFactory {
             case CHROME:
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
-                options.addArguments("start-maximized"); // open Browser in maximized mode
-                options.addArguments("disable-infobars"); // disabling infobars
-                options.addArguments("--disable-extensions"); // disabling extensions
+//                options.addArguments("start-maximized"); // open Browser in maximized mode
+//                options.addArguments("disable-infobars"); // disabling infobars
+//                options.addArguments("--disable-extensions"); // disabling extensions
                 options.addArguments("--no-sandbox"); // Bypass OS security model
                 options.addArguments("--headless");
                 System.setProperty("webdriver.chrome.driver", "drivers" + File.separator+ "chrome" + File.separator + PropManager.getInstance().getProperty("chrome_filename" + OSPath));
