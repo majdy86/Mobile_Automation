@@ -20,6 +20,7 @@
         <browserToRun>chrome</browserToRun>
         <LocalOrRemote>local</LocalOrRemote>
         <implicitlyWait>10</implicitlyWait>
+        <isHeadless>true</isHeadless>
     </properties>
 
     <dependencies>

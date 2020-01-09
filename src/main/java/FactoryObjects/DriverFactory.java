@@ -49,9 +49,11 @@ public class DriverFactory {
         switch (DriverType.getBrowser()) {
             case CHROME:
                 ChromeOptions options = new ChromeOptions();
-                options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
                 options.addArguments("--no-sandbox"); // Bypass OS security model
-//                options.addArguments("--headless");
+                options.addArguments("--disable-dev-shm-usage"); // overcome limited resource problems
+                options.setExperimentalOption("useAutomationExtension", false);
+                if(PropManager.getInstance().getProperty("chrome_options_headless").equals("true"))
+                options.addArguments("--headless");
                 System.setProperty("webdriver.chrome.driver", "drivers" + File.separator+ "chrome" + File.separator + PropManager.getInstance().getProperty("chrome_filename" + OSPath));
                 driver = new ChromeDriver(options);
                 break;
