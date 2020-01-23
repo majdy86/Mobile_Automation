@@ -16,6 +16,7 @@ public class PropManager {
         properties.load(getClass().getResourceAsStream("/environment.properties"));
         properties.load(getClass().getResourceAsStream("/configration.properties"));
         properties.load(getClass().getResourceAsStream("/localization_en.properties"));
+        properties.load(getClass().getResourceAsStream("/page_url.properties"));
 
     }
 

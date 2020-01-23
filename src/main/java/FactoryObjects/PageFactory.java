@@ -2,6 +2,7 @@ package FactoryObjects;
 
 
 import PageObjects.*;
+import testDataProvider.User;
 
 public class PageFactory {
 
@@ -20,6 +21,8 @@ public class PageFactory {
     private SettingsPage settingsPage;
     private ProfilePage profilePage;
     private SelectUserTypePage selectUserTypePage;
+    private GenericPage genericPage;
+    private User user;
 
     public PageFactory(DriverFactory driverFactory) {
         this.driverFactory = driverFactory;
@@ -96,6 +99,18 @@ public class PageFactory {
         if (selectUserTypePage == null)
             selectUserTypePage = new SelectUserTypePage(driverFactory);
         return selectUserTypePage;
+    }
+
+    public GenericPage genericPage(){
+        if(genericPage == null)
+            genericPage = new GenericPage(driverFactory);
+        return genericPage;
+    }
+
+    public User getUser(){
+        if (user == null)
+            user = new User();
+        return user;
     }
 
 

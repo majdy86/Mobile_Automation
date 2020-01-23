@@ -1,16 +1,19 @@
 package stepdefs;
 
 import FactoryObjects.PageFactory;
+import database.DBConnection;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import utils.PropManager;
+
+import java.sql.SQLException;
 
 
 public class LoginStepDefs {
 
     PageFactory pageFactory;
+    DBConnection dbConnection = new DBConnection();
 
     public LoginStepDefs(PageFactory pageFactory) {
         this.pageFactory = pageFactory;
@@ -37,10 +40,6 @@ public class LoginStepDefs {
         pageFactory.loginPage().clickSignIn();
     }
 
-    @Then("the user should be redirected to projects list page")
-    public void findFilterHeader() {
-        pageFactory.projectsListPage().checkFilterHeader();
-    }
 
     @Then("the following error message should displays \"These credentials do not match our records.\"")
     public void invalidPasswordErrMsg(){

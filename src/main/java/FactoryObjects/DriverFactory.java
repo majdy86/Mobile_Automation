@@ -79,6 +79,7 @@ public class DriverFactory {
         caps.setCapability("build","1.0");
         caps.setCapability("browserstack.debug", "true");
         caps.setCapability("browserstack.networkLogs", "true");
+        System.setProperty("local", "true");
         try{
             if (System.getProperty("local") != null && System.getProperty("local").equals("true")) {
                 caps.setCapability("browserstack.local", "true");
@@ -138,6 +139,12 @@ public class DriverFactory {
             waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(getExplicitlyWait()));
         }
        return waitExplicit;
+
+    }
+
+    public WebDriverWait getwaitExplicit(WebDriver driver, Duration timeout)  {
+        waitExplicit = new WebDriverWait(driver, timeout);
+        return waitExplicit;
 
     }
 

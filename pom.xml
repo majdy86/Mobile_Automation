@@ -20,7 +20,7 @@
         <browserToRun>chrome</browserToRun>
         <LocalOrRemote>local</LocalOrRemote>
         <implicitlyWait>10</implicitlyWait>
-        <isHeadless>true</isHeadless>
+        <isHeadless>false</isHeadless>
     </properties>
 
     <dependencies>
@@ -121,6 +121,13 @@
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>1.0.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.8</version>
         </dependency>
 
     </dependencies>

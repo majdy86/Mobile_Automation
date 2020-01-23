@@ -59,4 +59,11 @@ public class LoginPage extends BasePageObject {
     public void checkPasswordRequired(){
         assertTrue(Boolean.parseBoolean(password.getAttribute("Required")));
     }
+
+    public void loggedInProjectManager(String email, String password){
+        navigateToLoginPage();
+        setEmail(email);
+        setPassword(password);
+        clickSignIn();
+    }
 }

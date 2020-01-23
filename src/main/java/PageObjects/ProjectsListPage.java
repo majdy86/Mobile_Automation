@@ -25,8 +25,6 @@ public class ProjectsListPage extends BasePageObject {
     public void checkFilterHeader(){
         boolean filterTextIsDisplayed = filterText.isDisplayed();
         assertTrue(filterTextIsDisplayed);
-        Faker fakeData = new Faker(new Locale("en"));
-        fakeData.address();
     }
 
 
