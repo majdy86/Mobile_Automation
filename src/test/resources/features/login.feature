@@ -32,7 +32,7 @@ Feature: Login
     Then the user should be redirected to projects list page
     Examples:
       |username|password|
-      |amalureedmanager@gmail.com|123456|
+      |amalureedmanager@gmail.com|checkAmal|
 
   @Positive
   Scenario Outline: login with valid project manager using capital characters for the email
@@ -43,7 +43,7 @@ Feature: Login
     Then the user should be redirected to projects list page
     Examples:
       |username|password|
-      |AMALUREEDMANAGER@GMAIL.COM|123456|
+      |AMALUREEDMANAGER@GMAIL.COM|checkAmal|
 
   @Negative
   Scenario Outline: login with a valid executor's email and invalid password, i should get an error
