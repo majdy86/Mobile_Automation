@@ -13,10 +13,9 @@ public class PropManager {
     private PropManager() throws IOException {
 
         properties = new Properties();
-        properties.load(getClass().getResourceAsStream("/environment.properties"));
         properties.load(getClass().getResourceAsStream("/configration.properties"));
-        properties.load(getClass().getResourceAsStream("/localization_en.properties"));
-        properties.load(getClass().getResourceAsStream("/page_url.properties"));
+        properties.load(getClass().getResourceAsStream("/mobiles_capabilites.properties"));
+        properties.load(getClass().getResourceAsStream("/android_capabilites.properties"));
 
     }
 

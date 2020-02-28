@@ -3,25 +3,21 @@ package enums;
 import utils.PropManager;
 
 public enum DriverType {
-    CHROME,
-    FIREFOX,
-    SAFARI;
+    iOS,
+    ANDROID;
 
-    public static DriverType getBrowser() {
-        String browserType = PropManager.getInstance().getProperty("browser").toLowerCase();
+    public static DriverType getMobileDriver() {
+        String mobileDriverType = PropManager.getInstance().getProperty("mobile_platform").toLowerCase();
         DriverType driverType;
-        switch (browserType) {
-            case "firefox":
-                driverType = FIREFOX;
+        switch (mobileDriverType) {
+            case "ios":
+                driverType = iOS;
                 break;
-            case "safari":
-                driverType = SAFARI;
-                break;
-            case "chrome":
-                driverType = CHROME;
+            case "android":
+                driverType = ANDROID;
                 break;
             default:
-                throw new IllegalStateException("Unexpected browserType value: " + browserType);
+                throw new IllegalStateException("Unexpected mobile driver value: " + mobileDriverType);
         }
 
         return driverType;

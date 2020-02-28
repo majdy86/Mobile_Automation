@@ -16,11 +16,26 @@
         <aspectj.version>1.9.4</aspectj.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <envUrl>https://tmsqa.ureed.com/</envUrl>
-        <browserToRun>chrome</browserToRun>
+
+        <!-- Mobile Specific Configration -->
+        <appiumServer>http://0.0.0.0:4723/wd/hub</appiumServer>
+        <app_folder_path>application</app_folder_path>
+        <appName>Talabatv5.6.1_apkpure.com.apk</appName>
+        <platform>Android</platform>
+        <platformVersion>9</platformVersion>
+        <deviceName>androidDevice</deviceName>
+        <automationName>UIAutomator2</automationName>
+        <fullReset>true</fullReset>
         <LocalOrRemote>local</LocalOrRemote>
-        <implicitlyWait>10</implicitlyWait>
-        <isHeadless>false</isHeadless>
+        <implicitlyWait>15</implicitlyWait>
+
+        <!-- Android Specific Configrations -->
+        <appActivity>com.talabat.LandingScreen</appActivity>
+        <appPackage>com.talabat</appPackage>
+        <autoLaunch>true</autoLaunch>
+        <avd>first_emulator</avd>
+        <autoGrantPermissions>true</autoGrantPermissions>
+
     </properties>
 
     <dependencies>
@@ -95,13 +110,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.0.0-alpha-3</version>
-        </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.browserstack/browserstack-local-java -->
         <dependency>
             <groupId>com.browserstack</groupId>
@@ -128,6 +136,13 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.2.8</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>7.3.0</version>
         </dependency>
 
     </dependencies>
