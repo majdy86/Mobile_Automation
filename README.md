@@ -52,7 +52,7 @@ file.
 
 ### Tools & environment:
 
-macOS Catalina 10.15.2
+OS: macOS Catalina 10.15.2
 
 This project has been tested against the following tools:
 
