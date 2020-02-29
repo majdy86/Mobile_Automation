@@ -25,7 +25,7 @@ public class MobileDriverFactory {
     private void createDriver(){
         switch (EnvironmentType.getEnvironmentType()) {
             case LOCAL:
-                setWebDriver(createLocalDriver());
+                setMobileDriver(createLocalDriver());
                 break;
         }
     }
@@ -40,6 +40,7 @@ public class MobileDriverFactory {
         caps.setCapability(MobileCapabilityType.APP, getAbsoluteAppPath());
         caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, PropManager.getInstance().getProperty("mobile_automation_name"));
         caps.setCapability(MobileCapabilityType.FULL_RESET, PropManager.getInstance().getProperty("mobile_full_reset"));
+        caps.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, PropManager.getInstance().getProperty("mobile_full_reset"));
 
         switch (DriverType.getMobileDriver()) {
             case ANDROID:
@@ -48,6 +49,7 @@ public class MobileDriverFactory {
                 caps.setCapability(AndroidMobileCapabilityType.AUTO_LAUNCH, PropManager.getInstance().getProperty("auto_launch"));
                 caps.setCapability(AndroidMobileCapabilityType.AVD, PropManager.getInstance().getProperty("avd"));
                 caps.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, PropManager.getInstance().getProperty("auto_grant_permissions"));
+                caps.setCapability(AndroidMobileCapabilityType.IGNORE_UNIMPORTANT_VIEWS, PropManager.getInstance().getProperty("ignore_unimportant_views"));
 
                 driver = new AndroidDriver(new URL(PropManager.getInstance().getProperty("appium_server")), caps);
                 break;
@@ -80,7 +82,7 @@ public class MobileDriverFactory {
         return 30;
     }
 
-        private void setWebDriver(AppiumDriver driver) {
+        private void setMobileDriver(AppiumDriver driver) {
         if (driver != null) {
             this.driver = driver;
         }

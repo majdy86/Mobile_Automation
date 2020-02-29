@@ -9,6 +9,7 @@ import io.qameta.allure.Allure;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.html5.Location;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,6 +24,7 @@ public class Hooks {
 
     @Before
     public void setup() {
+        mobileDriverFactory.getDriver().setLocation(new Location(31.913025,35.8875851,10));
 
     }
 

@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cucumber</groupId>
-    <artifactId>UI</artifactId>
+    <artifactId>MobileAutomation</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
     <name>UI</name>
@@ -22,9 +22,9 @@
         <app_folder_path>application</app_folder_path>
         <appName>Talabatv5.6.1_apkpure.com.apk</appName>
         <platform>Android</platform>
-        <platformVersion>9</platformVersion>
+        <platformVersion>29</platformVersion>
         <deviceName>androidDevice</deviceName>
-        <automationName>UIAutomator2</automationName>
+        <automationName>UiAutomator2</automationName>
         <fullReset>true</fullReset>
         <LocalOrRemote>local</LocalOrRemote>
         <implicitlyWait>15</implicitlyWait>
@@ -33,8 +33,9 @@
         <appActivity>com.talabat.LandingScreen</appActivity>
         <appPackage>com.talabat</appPackage>
         <autoLaunch>true</autoLaunch>
-        <avd>first_emulator</avd>
+        <avd>Nexus_6P_API_22</avd>
         <autoGrantPermissions>true</autoGrantPermissions>
+        <ignoreUnimportantViews>true</ignoreUnimportantViews>
 
     </properties>
 

@@ -12,4 +12,5 @@ import org.junit.runner.RunWith;
 //         tags = "@Smoke"
  )
 public class RunCucumberTest {
+
 }

@@ -12,9 +12,6 @@ public class GenericPage extends BasePageObject {
     @AndroidFindBy(id = "com.talabat:id/btnLogin")
     AndroidElement loginButton;
 
-    @AndroidFindBy(id = "android:id/autofill_save_no")
-    AndroidElement noThanks;
-
     public GenericPage(MobileDriverFactory mobileDriverFactory) {
         super(mobileDriverFactory.getDriver());
         this.driver = mobileDriverFactory.getDriver();
@@ -24,13 +21,5 @@ public class GenericPage extends BasePageObject {
         loginButton.click();
 
 
-    }
-
-    public void clickNoThanksSavePasswordAlert(){
-        try{
-            noThanks.click();
-        }catch(Exception e){
-
-        }
     }
 }
